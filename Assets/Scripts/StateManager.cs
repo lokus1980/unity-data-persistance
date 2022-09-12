@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class StateManager : MonoBehaviour
 {
+    private const string BestScoreKey = "BestScore";
+
     public int bestScore = 0;
 
     public static StateManager Instance { get; private set; }
@@ -18,5 +20,13 @@ public class StateManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
+
+        bestScore = PlayerPrefs.GetInt(BestScoreKey, 0);
+    }
+
+    public void SaveGame()
+    {
+        PlayerPrefs.SetInt(BestScoreKey, bestScore);
+        PlayerPrefs.Save();
     }
 }

@@ -78,6 +78,7 @@ public class MainManager : MonoBehaviour
         if (m_Points > StateManager.Instance.bestScore)
         {
             StateManager.Instance.bestScore = m_Points;
+            StateManager.Instance.SaveGame();
             UpdateBestScoreText();
         }
     }
